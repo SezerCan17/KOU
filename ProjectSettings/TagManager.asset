@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ladder
+  - enemies
+  - player
+  - book1
   layers:
   - Default
   - TransparentFX
