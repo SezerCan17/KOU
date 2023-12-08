@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
+
 public class movment : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
+	private Vector2 theScale;
+	
 
+	private bool m_FacingRight = true;
 
 	float dirX;
 
@@ -30,13 +34,24 @@ public class movment : MonoBehaviour
 		Movement();
 		Climbing();
 		PlayerDirection();
+		//if (rb.velocity.x > 0 && !m_FacingRight)
+		//{
+		//	PlayerDirection();
 
-    }
+		//}
+		//else if (rb.velocity.x < 0 && m_FacingRight)
+		//{
+		//	PlayerDirection();
+
+		//}
+
+
+	}
 	void Movement()
 	{
 		dirX = Input.GetAxis("Horizontal");
 		rb.velocity = new Vector2(dirX * 7f, rb.velocity.y);
-		if (Input.GetButtonDown("Jump") && isJumping==true)
+		if (Input.GetButtonDown("Jump") && isJumping == true)
 		{
 			rb.velocity = new Vector2(rb.velocity.x, 10f);
 			isJumping = false;
@@ -52,15 +67,28 @@ public class movment : MonoBehaviour
 	}
 	void PlayerDirection()
 	{
-		if (rb.velocity.x > 0)
-		{
-			RS.flipX = false;
-		}
-		else if (rb.velocity.x < 0)
-		{
-			RS.flipX=true;
-		}
+
 		
+			if (dirX > 0 && !m_FacingRight || dirX < 0 && m_FacingRight)
+			{
+				m_FacingRight = !m_FacingRight;
+				transform.Rotate(0, 180, 0);
+			}
+		
+		//m_FacingRight = !m_FacingRight;
+		//theScale = transform.localScale;
+		//theScale.x *= -1;
+		//transform.localScale = theScale;
+
+		//if (rb.velocity.x > 0)
+		//{
+		//	RS.flipX = false;
+		//}
+		//else if (rb.velocity.x < 0)
+		//{
+		//	RS.flipX=true;
+		//}
+
 	}
 	private void FixedUpdate()
 	{
