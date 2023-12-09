@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LearnSkill : MonoBehaviour
 {
-	// Start is called before the first frame update
+	
 	private void OnTriggerStay2D(Collider2D collision)
 	{
 	

@@ -34,16 +34,7 @@ public class movment : MonoBehaviour
 		Movement();
 		Climbing();
 		PlayerDirection();
-		//if (rb.velocity.x > 0 && !m_FacingRight)
-		//{
-		//	PlayerDirection();
-
-		//}
-		//else if (rb.velocity.x < 0 && m_FacingRight)
-		//{
-		//	PlayerDirection();
-
-		//}
+		
 
 
 	}
@@ -75,19 +66,6 @@ public class movment : MonoBehaviour
 				transform.Rotate(0, 180, 0);
 			}
 		
-		//m_FacingRight = !m_FacingRight;
-		//theScale = transform.localScale;
-		//theScale.x *= -1;
-		//transform.localScale = theScale;
-
-		//if (rb.velocity.x > 0)
-		//{
-		//	RS.flipX = false;
-		//}
-		//else if (rb.velocity.x < 0)
-		//{
-		//	RS.flipX=true;
-		//}
 
 	}
 	private void FixedUpdate()
@@ -109,6 +87,7 @@ public class movment : MonoBehaviour
 		{
 			isLadder= true;
 		}
+		
 	}
 	private void OnTriggerExit2D(Collider2D collision)
 	{
@@ -117,5 +96,14 @@ public class movment : MonoBehaviour
 			isLadder= false;
 			isClimbing= false;
 		}
+	}
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+	
+		if (collision.gameObject.CompareTag("enemies"))
+		{
+			rb.velocity = new Vector2(15f, 15f);
+		}
+
 	}
 }

@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    private Renderer render;
+    
+        
     private movment Movement;
 	public int maxHealth = 100;
     int currentHealth;
+    public HealtBar healthbar;
 	void Start()
 	{
 		currentHealth = maxHealth;
 		Movement = GetComponent<movment>();
+        render = GetComponent<Renderer>();
 	}
 
 	// Update is called once per frame
@@ -21,6 +26,9 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+
+        healthbar.SetHealth(currentHealth);
+
 		Debug.Log("hasar aldýn");
 		//hurt animation
 		if (currentHealth <= 0)
@@ -33,15 +41,15 @@ public class PlayerHealth : MonoBehaviour
         //die animation
         Debug.Log("geberdin");
 		Movement.enabled = false;
-        GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
+        //GetComponent<Collider2D>().enabled = false;
+        //this.enabled = false;
 	}
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
         if (collision.gameObject.CompareTag("enemies"))
         {
 			TakeDamage(20);
-		}
-                   
+            render.material.color = Color.yellow;
+		}          
 	}
 }
