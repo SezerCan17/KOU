@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+//using static Pathfinding.Util.GridLookup<T>;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class EnemyAI : MonoBehaviour
     public Transform target1;
     public Transform target2;
     public bool target1_ = false;
-
+    EnemyAI_patrolling enemyAI_Patrolling;
     public float speed = 200f;
     public float nextWaypointDistance = 3f;
 
@@ -53,6 +54,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
 
         if (path == null)
         {
@@ -77,11 +79,11 @@ public class EnemyAI : MonoBehaviour
         {
             currentWaypoint++;
         }
-        if (force.x > 0)
+        if (rb.velocity.x > 0)
         {
             enemyGFX.localScale = new Vector3(1f, 1f, 1f);
         }
-        else if (force.x < 0)
+        else if (rb.velocity.x< 0)
         {
             enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
         }

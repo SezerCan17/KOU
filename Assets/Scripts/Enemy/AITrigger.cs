@@ -1,12 +1,17 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AITrigger : MonoBehaviour
 {
-    
+   
     public EnemyAI enemyAi;
     public EnemyAI_patrolling enemyAI_Patrolling;
+    public bool yon;
+    
 
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -14,10 +19,13 @@ public class AITrigger : MonoBehaviour
         if (other.gameObject.tag=="Player") {
             Debug.Log("Geldi1");
             enemyAi.enabled = true;
-            enemyAI_Patrolling.enabled = false;
+            //enemyAI_Patrolling.enabled = false;
+            //yon = enemyAI_Patrolling.rlook;
             Debug.Log("Geldi2");
-           //hedefNesne.SetActive(true);
+           
+            //hedefNesne.SetActive(true);
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -25,7 +33,11 @@ public class AITrigger : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             enemyAi.enabled = false;
-            enemyAI_Patrolling.enabled = true;
+            //enemyAI_Patrolling.enabled = true;
+            //yon = enemyAI_Patrolling.rlook;
         }
     }
+
+    
 }
+
