@@ -10,12 +10,18 @@ public class Atack1 : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayer;
 
+
+    public EnemyHealth enemyhealth;
+    
+    
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
             Attack1();
-        }
+			
+		}
 		
 	}
     void Attack1()
@@ -26,8 +32,11 @@ public class Atack1 : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             Debug.Log("we hit" + enemy.name);
-        }
-    }
+            enemyhealth.TakeDamage(20);
+
+		}
+		
+	}
 	void OnDrawGizmosSelected()
 	{   
         if(attackPoint == null)
@@ -35,5 +44,6 @@ public class Atack1 : MonoBehaviour
             return;
         }
 		Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+		
 	}
 }

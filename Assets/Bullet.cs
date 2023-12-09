@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
 	
+
+
 	public float speed = 20f;
 	public Rigidbody2D rb;
 	void Start()
@@ -15,5 +16,13 @@ public class Bullet : MonoBehaviour
 	void Update()
 	{
 		Destroy(gameObject, 1f);
+	}
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.gameObject.CompareTag("enemies"))
+		{
+			Destroy(gameObject);
+
+		}
 	}
 }
