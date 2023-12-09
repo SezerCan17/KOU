@@ -8,6 +8,7 @@ public class movment : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
 	private Vector2 theScale;
+	private Animator myanims;
 	
 
 	private bool m_FacingRight = true;
@@ -23,7 +24,7 @@ public class movment : MonoBehaviour
 	[SerializeField] private SpriteRenderer RS;
 	void Start()
 	{
-		
+		myanims= GetComponent<Animator>();
 	}
 	void Update()
     {
@@ -41,7 +42,9 @@ public class movment : MonoBehaviour
 	void Movement()
 	{
 		dirX = Input.GetAxis("Horizontal");
-		rb.velocity = new Vector2(dirX * 7f, rb.velocity.y);
+        myanims.SetFloat("run", Mathf.Abs(dirX));
+
+        rb.velocity = new Vector2(dirX * 7f, rb.velocity.y);
 		if (Input.GetButtonDown("Jump") && isJumping == true)
 		{
 			rb.velocity = new Vector2(rb.velocity.x, 10f);
