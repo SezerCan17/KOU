@@ -7,8 +7,10 @@ public class PlayerHealth : MonoBehaviour
     public SpriteRenderer render;
     public Color newColor1;
 	public Color newColor2;
-	
 
+	private HealtBar healtbar;
+ 
+	Vector2 checkPointPos;
 
 	private movment Movement;
 	public int maxHealth = 100;
@@ -20,14 +22,14 @@ public class PlayerHealth : MonoBehaviour
 		Movement = GetComponent<movment>();
         render = GetComponent<SpriteRenderer>();
 
-
+		checkPointPos = transform.position;
 	}
 
 	// Update is called once per frame
 	void Update()
     {
-        
-    }
+		
+	}
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -38,16 +40,26 @@ public class PlayerHealth : MonoBehaviour
 		//hurt animation
 		if (currentHealth <= 0)
         {
-            Die();
-        }
+			
+			Die();
+			currentHealth = maxHealth;
+			healthbar.slider.value = 100;
+
+		}
     }
     public void Die()
     {
         //die animation
         Debug.Log("geberdin");
-		Movement.enabled = false;
-        //GetComponent<Collider2D>().enabled = false;
-        //this.enabled = false;
+		//Movement.enabled = false;
+		//GetComponent<Collider2D>().enabled = false;
+		//this.enabled = false;
+		transform.position = checkPointPos;
+		
+	}
+	public void UpdateCheckpoint(Vector2 pos)
+	{
+		checkPointPos = pos;
 	}
 	private void OnCollisionEnter2D(Collision2D collision)
 	{

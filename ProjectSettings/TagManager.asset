@@ -8,6 +8,7 @@ TagManager:
   - enemies
   - player
   - book1
+  - GM
   layers:
   - Default
   - TransparentFX
