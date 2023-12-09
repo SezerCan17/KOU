@@ -6,8 +6,15 @@ public class bookReading : MonoBehaviour
 {
     public bool isOpen;
     public Animator animator;
-
-    public void OpenBook()
+ //   private LearnSkill learn;
+	//void Update()
+	//{
+	//	if(learn.onbook == true)
+ //       {
+	//		GetComponent<Collider2D>().enabled = false;
+	//	}
+	//}
+	public void OpenBook()
     {
         if(!isOpen) 
         {

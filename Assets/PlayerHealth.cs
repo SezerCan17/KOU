@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private Renderer render;
-    
-        
-    private movment Movement;
+    public SpriteRenderer render;
+    public Color newColor1;
+	public Color newColor2;
+	
+
+
+	private movment Movement;
 	public int maxHealth = 100;
     int currentHealth;
     public HealtBar healthbar;
@@ -15,7 +18,9 @@ public class PlayerHealth : MonoBehaviour
 	{
 		currentHealth = maxHealth;
 		Movement = GetComponent<movment>();
-        render = GetComponent<Renderer>();
+        render = GetComponent<SpriteRenderer>();
+
+
 	}
 
 	// Update is called once per frame
@@ -49,7 +54,17 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("enemies"))
         {
 			TakeDamage(20);
-            render.material.color = Color.yellow;
-		}          
+            render.color = newColor1;
+			
+		}   
+       
+	}
+	private void OnCollisionExit2D(Collision2D collision)
+	{
+		if (collision.gameObject.CompareTag("enemies"))
+		{
+			render.color = newColor2;
+		}
+
 	}
 }
