@@ -9,6 +9,9 @@ TagManager:
   - player
   - book1
   - GM
+  - bullet
+  - wall
+  - bullet2
   layers:
   - Default
   - TransparentFX
