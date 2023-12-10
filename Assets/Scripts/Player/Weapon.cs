@@ -9,6 +9,8 @@ public class Weapon : MonoBehaviour
     public GameObject bulletPrefab;
 	public float sayac;
 
+	public bool canUse = false;
+
 	public float sayac2;
 	public float sayac3;
 	public GameObject bulletPrefab2;
@@ -49,7 +51,7 @@ public class Weapon : MonoBehaviour
 
 		}
 		sayac2 -= Time.deltaTime;
-		if (Input.GetKeyDown(KeyCode.T))
+		if (Input.GetKeyDown(KeyCode.T) && canUse)
 		{
 			
 			if (sayac3 < 0)

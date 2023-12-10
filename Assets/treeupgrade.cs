@@ -5,11 +5,13 @@ using UnityEngine;
 public class treeupgrade : MonoBehaviour
 {
 	private bool temasvar = false;
+	public Weapon weapon;
 	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.E))
 		{
 			treeupgrade_();
+
 		}
 	}
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -23,7 +25,9 @@ public class treeupgrade : MonoBehaviour
 	{
 		if (temasvar)
 		{
+			weapon.canUse = true;
 			gameObject.SetActive(false);
+			
 		}
 		
 	}
