@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject GameOverMenu;
-    
+
     public void startButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
 
     public void resumeButton()
     {
-        pauseMenu.SetActive(false);
+        //pauseMenu.SetActive(false);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         Time.timeScale = 1f;
     }
 
@@ -34,7 +35,12 @@ public class GameManager : MonoBehaviour
 
     public void exitButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -1 );
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+    }
+
+    public void GameOverExit()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
     }
     public void GameOver()
     {
@@ -43,9 +49,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            pauseMenu.SetActive(true);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             pauseButton();
         }
     }
