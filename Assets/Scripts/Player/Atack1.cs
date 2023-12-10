@@ -10,8 +10,10 @@ public class Atack1 : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayer;
 
+    float sayac = 1f;
 
-    public EnemyHealth enemyhealth;
+
+    
     
     
 
@@ -19,20 +21,25 @@ public class Atack1 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            Attack1();
-			
+            if (sayac < 0)
+            {
+				Attack1();
+				gameObject.SetActive(true);
+				sayac = 1f;
+			}
+            
 		}
-		
+		sayac -= Time.deltaTime;
 	}
     void Attack1()
     {
         animator.SetTrigger("Attack1");
-
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position,attackRange,enemyLayer);
+		
+		Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position,attackRange,enemyLayer);
         foreach(Collider2D enemy in hitEnemies)
         {
             Debug.Log("we hit" + enemy.name);
-            enemyhealth.TakeDamage(20);
+            enemy.GetComponent<EnemyHealth>().TakeDamage(20);
 
 		}
 		
@@ -46,4 +53,5 @@ public class Atack1 : MonoBehaviour
 		Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 		
 	}
+
 }

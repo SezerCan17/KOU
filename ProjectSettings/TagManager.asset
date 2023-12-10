@@ -12,6 +12,12 @@ TagManager:
   - bullet
   - wall
   - bullet2
+  - teleport
+  - playerattack
+  - wall2
+  - treeupgrade
+  - tree
+  - treebullet
   layers:
   - Default
   - TransparentFX
@@ -21,7 +27,7 @@ TagManager:
   - UI
   - EnemyGround
   - Button
-  - 
+  - Player
   - 
   - 
   - 

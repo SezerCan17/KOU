@@ -10,7 +10,12 @@ public class Weapon : MonoBehaviour
 	public float sayac;
 
 	public float sayac2;
+	public float sayac3;
 	public GameObject bulletPrefab2;
+
+	public GameObject bulletPrefab3;
+
+	public Animator myanim;
 	// Update is called once per frame
 
 	public bool openportal = false;
@@ -22,8 +27,9 @@ public class Weapon : MonoBehaviour
 		{
 			if(sayac < 0)
 			{
+				myanim.SetTrigger("shoot");
 				Shoot();
-				sayac = 5f;
+				sayac = 1f;
 			}
 			
 
@@ -31,15 +37,31 @@ public class Weapon : MonoBehaviour
 		sayac -= Time.deltaTime;
 		if(Input.GetButtonDown("Fire2"))
 		{
+			
 			if (sayac2 < 0)
 			{
+
+				myanim.SetTrigger("shoot");
 				Shoot2();
-				sayac = 5f;
+				sayac2 = 1f;
 			}
 
 
 		}
 		sayac2 -= Time.deltaTime;
+		if (Input.GetKeyDown(KeyCode.T))
+		{
+			
+			if (sayac3 < 0)
+			{
+				myanim.SetTrigger("shoot");
+				Shoot3();
+				sayac3 = 1f;
+			}
+
+
+		}
+		sayac3 -= Time.deltaTime;
 	}
 
 	void Shoot()
@@ -55,5 +77,11 @@ public class Weapon : MonoBehaviour
 		openportal= true;
 
 }
+	void Shoot3()
+	{
+
+		Instantiate(bulletPrefab3, firePoint.position, firePoint.rotation);
+
+	}
 
 }

@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
 	public int currentHealth;
 	
 	public Collider2D col;
+
 	void Start()
     {
 		currentHealth = maxHealth;
@@ -22,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
 			//die animation
 			Die();
 			gameObject.SetActive(false);
+			
 
 		}
 	}
@@ -36,5 +38,7 @@ public class EnemyHealth : MonoBehaviour
 			TakeDamage(10);
 
 		}
+		
 	}
+	
 }

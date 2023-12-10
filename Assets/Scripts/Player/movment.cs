@@ -6,7 +6,13 @@ using UnityEngine;
 
 public class movment : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rb;
+
+	private GameObject currentTeleporter;
+	
+	
+	
+	
+	[SerializeField] private Rigidbody2D rb;
 	private Vector2 theScale;
 	private Animator myanims;
 	
@@ -32,6 +38,7 @@ public class movment : MonoBehaviour
 		{
 			isJumping = true;
 		}
+		myanims.SetBool("jump", false);
 		Movement();
 		Climbing();
 		PlayerDirection();
@@ -44,10 +51,11 @@ public class movment : MonoBehaviour
 		dirX = Input.GetAxis("Horizontal");
         myanims.SetFloat("run", Mathf.Abs(dirX));
 
-        rb.velocity = new Vector2(dirX * 7f, rb.velocity.y);
+        rb.velocity = new Vector2(dirX * 10f, rb.velocity.y);
 		if (Input.GetButtonDown("Jump") && isJumping == true)
 		{
-			rb.velocity = new Vector2(rb.velocity.x, 10f);
+			myanims.SetBool("jump", true);
+			rb.velocity = new Vector2(rb.velocity.x, 20f);
 			isJumping = false;
 		}
 	}
@@ -90,7 +98,13 @@ public class movment : MonoBehaviour
 		{
 			isLadder= true;
 		}
-		
+
+		if (collision.CompareTag("teleport"))
+		{
+			currentTeleporter = collision.gameObject;
+			transform.position = currentTeleporter.GetComponent<Teleporter>().GetDestination().position;
+		}
+
 	}
 	private void OnTriggerExit2D(Collider2D collision)
 	{
@@ -98,6 +112,13 @@ public class movment : MonoBehaviour
 		{
 			isLadder= false;
 			isClimbing= false;
+		}
+		if (collision.CompareTag("teleport"))
+		{
+			if(collision.gameObject == currentTeleporter)
+			{
+				currentTeleporter = null;
+			}
 		}
 	}
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -109,4 +130,6 @@ public class movment : MonoBehaviour
 		}
 
 	}
+
+	
 }
