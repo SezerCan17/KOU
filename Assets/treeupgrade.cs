@@ -5,7 +5,7 @@ using UnityEngine;
 public class treeupgrade : MonoBehaviour
 {
 	private bool temasvar = false;
-	public Weapon weapon;
+	public Weapon3 weapon3;
 	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.E))
@@ -25,7 +25,7 @@ public class treeupgrade : MonoBehaviour
 	{
 		if (temasvar)
 		{
-			weapon.canUse = true;
+			weapon3.canUse = true;
 			gameObject.SetActive(false);
 			
 		}

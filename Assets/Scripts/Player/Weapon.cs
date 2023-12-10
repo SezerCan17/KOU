@@ -23,21 +23,21 @@ public class Weapon : MonoBehaviour
 	public bool openportal = false;
 
 	void Update()
-	 {
-		
+	{
+
 		if (Input.GetButtonDown("Fire1"))
 		{
-			if(sayac < 0)
+			if (sayac < 0)
 			{
 				myanim.SetTrigger("shoot");
 				Shoot();
 				sayac = 1f;
 			}
-			
+
 
 		}
 		sayac -= Time.deltaTime;
-		if(Input.GetButtonDown("Fire2"))
+		/*if(Input.GetButtonDown("Fire2"))
 		{
 			
 			if (sayac2 < 0)
@@ -45,13 +45,13 @@ public class Weapon : MonoBehaviour
 
 				myanim.SetTrigger("shoot");
 				Shoot2();
-				sayac2 = 1f;
+				sayac2 = 1f;a
 			}
 
 
 		}
-		sayac2 -= Time.deltaTime;
-		if (Input.GetKeyDown(KeyCode.T) && canUse)
+		sayac2 -= Time.deltaTime;*/
+		/*if (Input.GetKeyDown(KeyCode.T) && canUse)
 		{
 			
 			if (sayac3 < 0)
@@ -64,26 +64,26 @@ public class Weapon : MonoBehaviour
 
 		}
 		sayac3 -= Time.deltaTime;
-	}
+	}*/
 
-	void Shoot()
-    {
-		
-		Instantiate(bulletPrefab,firePoint.position,firePoint.rotation);
-		
-	}
-	void Shoot2()
-	{
+		void Shoot()
+		{
 
-		Instantiate(bulletPrefab2, firePoint.position, firePoint.rotation);
-		openportal= true;
+			Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-}
-	void Shoot3()
-	{
+		}
+		/*void Shoot2()
+		{
 
-		Instantiate(bulletPrefab3, firePoint.position, firePoint.rotation);
+			Instantiate(bulletPrefab2, firePoint.position, firePoint.rotation);
+			openportal= true;
 
 	}
+		void Shoot3()
+		{
 
+			Instantiate(bulletPrefab3, firePoint.position, firePoint.rotation);
+
+		}*/
+	}
 }

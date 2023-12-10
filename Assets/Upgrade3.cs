@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Upgrade2 : MonoBehaviour
+public class Upgrade3 : MonoBehaviour
 {
-    public GameObject upgrade2;
+    public GameObject upgrade3;
     public GameObject bambuUI;
-    public Weapon2 weapon2;
+    public Weapon weapon;
     public bool temasvar;
     // Start is called before the first frame update
     void Start()
@@ -42,8 +40,8 @@ public class Upgrade2 : MonoBehaviour
     {
         if (temasvar && bambuUI.activeSelf)
         {
-            upgrade2.SetActive(true);
-            weapon2.enabled = true;
+            upgrade3.SetActive(true);
+            weapon.enabled = true;
         }
     }
 }

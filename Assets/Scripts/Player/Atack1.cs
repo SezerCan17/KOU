@@ -19,7 +19,7 @@ public class Atack1 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (sayac < 0)
             {
