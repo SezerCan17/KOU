@@ -16,7 +16,7 @@ public class AITrigger : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag=="Player") {
+        if (other.gameObject.tag=="player") {
             Debug.Log("Geldi1");
             enemyAi.enabled = true;
             //enemyAI_Patrolling.enabled = false;
@@ -30,7 +30,7 @@ public class AITrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "player")
         {
             enemyAi.enabled = false;
             //enemyAI_Patrolling.enabled = true;

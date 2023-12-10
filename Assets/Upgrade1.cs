@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bookReading : MonoBehaviour
+public class Upgrade1 : MonoBehaviour
 {
-    public GameObject book1_UI;
-    public GameObject book;
-    private bool temasvar;
+    public GameObject upgrade1;
+    public GameObject bambuUI;
+    public Atack1 attack1;
+    public bool temasvar;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class bookReading : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            collect_Book();
+            upgrade_();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,12 +38,12 @@ public class bookReading : MonoBehaviour
         }
     }
 
-    public void collect_Book()
+    public void upgrade_()
     {
-        if (temasvar)
+        if (temasvar && bambuUI.activeSelf)
         {
-            book1_UI.SetActive(true); 
-            book.SetActive(false);
+            upgrade1.SetActive(true);
+            attack1.enabled = true;
         }
     }
 }
