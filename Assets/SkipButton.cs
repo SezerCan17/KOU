@@ -7,7 +7,7 @@ public class SkipButton : MonoBehaviour
     public GameObject UI_;
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.O))
+        if(Input.GetKeyDown(KeyCode.Q))
         {
             UI_.SetActive(false);
         }
