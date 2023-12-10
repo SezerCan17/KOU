@@ -9,8 +9,9 @@ public class EnemyHealth : MonoBehaviour
 	
 	public Collider2D col;
 
-	
+	public Rigidbody2D rb;
 
+	public Animator animator;
 
 	public SpriteRenderer render;
 	public Color newColor1;
@@ -20,7 +21,13 @@ public class EnemyHealth : MonoBehaviour
 		currentHealth = maxHealth;
 		render = GetComponent<SpriteRenderer>();
 	}
-	
+	void Update()
+	{
+		
+			animator.SetFloat("speed", Mathf.Abs(rb.velocity.x));
+		
+	}
+
 	public void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
