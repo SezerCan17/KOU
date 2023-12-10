@@ -43,6 +43,7 @@ public class Upgrade1 : MonoBehaviour
         if (temasvar && bambuUI.activeSelf)
         {
             upgrade1.SetActive(true);
+            bambuUI.SetActive(false);
             attack1.enabled = true;
         }
     }

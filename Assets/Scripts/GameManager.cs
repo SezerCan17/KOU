@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     public void startButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
     }
 
     public void resumeButton()
@@ -45,6 +45,10 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         GameOverMenu.SetActive(true);
+    }
+    public void CizgiRomanButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
     }
 
     private void Update()
