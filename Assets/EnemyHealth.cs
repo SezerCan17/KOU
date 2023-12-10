@@ -9,8 +9,7 @@ public class EnemyHealth : MonoBehaviour
 	
 	public Collider2D col;
 
-
-
+	
 
 
 	public SpriteRenderer render;
@@ -25,7 +24,8 @@ public class EnemyHealth : MonoBehaviour
 	public void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
-		
+		render.color = newColor1;
+		StartCoroutine(sayac());
 		if (currentHealth <= 0)
 		{
 			//die animation
@@ -45,17 +45,15 @@ public class EnemyHealth : MonoBehaviour
 		{
 			TakeDamage(10);
 			render.color = newColor1;
+			StartCoroutine(sayac());
 		}
 		
 	}
-	private void OnCollisionExit2D(Collision2D collision)
+
+
+	public IEnumerator sayac()
 	{
-		if (collision.gameObject.CompareTag("bullet"))
-		{
-			TakeDamage(10);
-			render.color = newColor2;
-		}
-
+		yield return new WaitForSeconds(0.2f);
+		render.color = newColor2;
 	}
-
 }
