@@ -65,6 +65,7 @@ public class movment : MonoBehaviour
 		if (isLadder && Mathf.Abs(vertical) > 0f)
 		{
 			isClimbing = true;
+			myanims.SetBool("climb", true);
 		}
 	}
 	void PlayerDirection()
@@ -112,6 +113,7 @@ public class movment : MonoBehaviour
 		{
 			isLadder= false;
 			isClimbing= false;
+			myanims.SetBool("climb", false);
 		}
 		if (collision.CompareTag("teleport"))
 		{

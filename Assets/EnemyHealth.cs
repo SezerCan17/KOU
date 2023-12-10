@@ -9,15 +9,23 @@ public class EnemyHealth : MonoBehaviour
 	
 	public Collider2D col;
 
+
+
+
+
+	public SpriteRenderer render;
+	public Color newColor1;
+	public Color newColor2;
 	void Start()
     {
 		currentHealth = maxHealth;
-	
+		render = GetComponent<SpriteRenderer>();
 	}
 	
 	public void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
+		
 		if (currentHealth <= 0)
 		{
 			//die animation
@@ -36,9 +44,18 @@ public class EnemyHealth : MonoBehaviour
 		if (collision.gameObject.CompareTag("bullet"))
 		{
 			TakeDamage(10);
-
+			render.color = newColor1;
 		}
 		
 	}
-	
+	private void OnCollisionExit2D(Collision2D collision)
+	{
+		if (collision.gameObject.CompareTag("bullet"))
+		{
+			TakeDamage(10);
+			render.color = newColor2;
+		}
+
+	}
+
 }
