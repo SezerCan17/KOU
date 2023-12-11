@@ -18,6 +18,7 @@ TagManager:
   - treeupgrade
   - tree
   - treebullet
+  - counter
   layers:
   - Default
   - TransparentFX

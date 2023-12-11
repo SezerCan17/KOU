@@ -6,18 +6,23 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public bool pause=false;
+    public GameObject resumeButton;
+    public bool pause = false;
     //public GameObject GameOverMenu;
-
+    public void Start()
+    {
+        pause = false;
+    }
     public void startButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
     }
 
-    public void resumeButton()
+    public void resumeButton_()
     {
         //pauseMenu.SetActive(false);
         //pauseMenu.SetActive(false);
+        //resumeButton.SetActive(false);
         Time.timeScale = 1f;
         pause = false;
     }
@@ -26,6 +31,7 @@ public class GameManager : MonoBehaviour
     public void pauseButton()
     {
         //pauseMenu.SetActive(true);
+        //resumeButton.SetActive(true);
         pause = true;
         Time.timeScale = 0f;
     }
@@ -53,30 +59,49 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
     }
+    public void WinMenu()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +4);
+    }
+    public void WinMenu_Exit()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex -5);
+    }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && !pause )
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            
+            if(pause==false)
+            {
+                pause = true;
+                pauseButton();
+            }
+            else if(pause==true) 
+            {
+                pause = false;
+                resumeButton_();
+            }
+
             Debug.Log("donacak");
             //pauseMenu.SetActive(true);
-            pauseButton();
+            
         }
-        if (Input.GetKeyDown(KeyCode.P) && pause)
+        /*if (Input.GetKeyDown(KeyCode.O) && pause == true)
         {
             pause = false;
             //pauseMenu.SetActive(false);
 
             //Time.timeScale = 1f;
-            resumeButton();
-        }
+            
+        }*/
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             exitButton();
         }
 
     }
-
-
 }
+
+
+

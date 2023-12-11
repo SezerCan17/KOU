@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class tree : MonoBehaviour
 {
-	
-	public float speed = 20f;
+
+
+    public float speed = 20f;
 	public Rigidbody2D rb;
 	void Start()
 	{
@@ -20,8 +21,10 @@ public class tree : MonoBehaviour
 	
 		if (collision.gameObject.CompareTag("tree"))
 		{
+
 			Destroy(gameObject);
 			
 		}
 	}
+
 }
