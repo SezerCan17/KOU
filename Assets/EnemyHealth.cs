@@ -37,15 +37,17 @@ public class EnemyHealth : MonoBehaviour
 		{
 			//die animation
 			Die();
-			gameObject.SetActive(false);
+            //Destroy(gameObject);
+            Debug.Log("Öldü");
+            gameObject.SetActive(false);
 			
 
 		}
 	}
-	private void Die()
+	public void Die()
 	{
-
-	}
+       
+    }
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.gameObject.CompareTag("bullet"))

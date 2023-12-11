@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public GameObject GameOverMenu;
+    public bool pause=false;
+    //public GameObject GameOverMenu;
 
     public void startButton()
     {
@@ -16,14 +17,16 @@ public class GameManager : MonoBehaviour
     public void resumeButton()
     {
         //pauseMenu.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        //pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        pause = false;
     }
 
 
     public void pauseButton()
     {
-        pauseMenu.SetActive(true);
+        //pauseMenu.SetActive(true);
+        pause = true;
         Time.timeScale = 0f;
     }
 
@@ -35,7 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void exitButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
     public void GameOverExit()
@@ -44,20 +47,35 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
-        GameOverMenu.SetActive(true);
+        //GameOverMenu.SetActive(true);
     }
     public void CizgiRomanButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
     }
 
-    private void Update()
+    public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && !pause )
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            
+            Debug.Log("donacak");
+            //pauseMenu.SetActive(true);
             pauseButton();
         }
+        if (Input.GetKeyDown(KeyCode.P) && pause)
+        {
+            pause = false;
+            //pauseMenu.SetActive(false);
+
+            //Time.timeScale = 1f;
+            resumeButton();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            exitButton();
+        }
+
     }
 
 

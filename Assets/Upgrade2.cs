@@ -8,6 +8,8 @@ public class Upgrade2 : MonoBehaviour
     public GameObject bambuUI;
     public Weapon2 weapon2;
     public bool temasvar;
+    public AudioSource talk;
+    public Ses ses;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,11 @@ public class Upgrade2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             upgrade_();
+        }
+        if(upgrade2.activeSelf)
+        {
+            Debug.Log("TalkBaþladý");
+            talk.Play();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

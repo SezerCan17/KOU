@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 
@@ -8,8 +8,8 @@ public class movment : MonoBehaviour
 {
 
 	private GameObject currentTeleporter;
-	
-	
+
+	public AudioSource cim;
 	
 	
 	[SerializeField] private Rigidbody2D rb;
@@ -90,6 +90,11 @@ public class movment : MonoBehaviour
 		else
 		{
 			rb.gravityScale=5f;
+		}
+
+		if(rb.velocity.x != 0f)
+		{
+			cim.Play();
 		}
 	}
 	
