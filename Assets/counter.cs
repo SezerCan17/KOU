@@ -8,6 +8,7 @@ public class counter : MonoBehaviour
     
     public bool check;
     public int say=0;
+    public GameManager gm;
     [SerializeField] TMP_Text text;
 
     private void OnTriggerEnter2D(Collider2D collider2D)
@@ -32,7 +33,7 @@ public class counter : MonoBehaviour
         text.text = "Target:" + say +"/14";
         if(say==14)
         {
-            
+            gm.WinMenu();
         }
          
     }

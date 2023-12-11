@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
 	public GameObject[] hearts;
 
 	public Rigidbody2D rb;
-
+	public Animator myanims;
 
 
 	public int dieCounter=0;
@@ -70,7 +70,8 @@ public class PlayerHealth : MonoBehaviour
 		dieCounter++;
 		if( dieCounter == 3 ) 
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            StartCoroutine(olmeTime());
+            
 		}
 		//Movement.enabled = false;
 		//GetComponent<Collider2D>().enabled = false;
@@ -80,6 +81,7 @@ public class PlayerHealth : MonoBehaviour
 	}
 	public void UpdateCheckpoint(Vector2 pos)
 	{
+		
 		checkPointPos = pos;
 	}
 	private void OnCollisionEnter2D(Collision2D collision)
@@ -100,4 +102,12 @@ public class PlayerHealth : MonoBehaviour
 		}
 
 	}
+
+	public IEnumerator olmeTime()
+	{
+        myanims.SetTrigger("die");
+        yield return new WaitForSeconds(1.25f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+
+    }
 }

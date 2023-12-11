@@ -19,8 +19,12 @@ public class CheckPoint : MonoBehaviour
 	{
 		if (collision.CompareTag("player"))
 		{
-			playerhealth.UpdateCheckpoint(transform.position);
-			collider.GetComponent<Collider2D>().enabled= false;
+			if(playerhealth.dieCounter<=2)
+			{
+                playerhealth.UpdateCheckpoint(transform.position);
+                collider.GetComponent<Collider2D>().enabled = false;
+            }
+			
 		}
 	}
 }
